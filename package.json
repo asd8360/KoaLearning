@@ -1,0 +1,13 @@
+{
+  "name": "koa-http-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "wenwuhang <wenwuhang@pku.edu.cn>",
+  "license": "MIT",
+  "dependencies": {
+    "fs.promised": "^3.0.0",
+    "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
+    "koa-route": "^3.2.0"
+  }
+}
