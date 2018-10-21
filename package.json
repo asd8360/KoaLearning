@@ -5,9 +5,13 @@
   "author": "wenwuhang <wenwuhang@pku.edu.cn>",
   "license": "MIT",
   "dependencies": {
+    "busboy": "^0.2.14",
     "fs.promised": "^3.0.0",
     "koa": "^2.5.3",
     "koa-body": "^4.0.4",
-    "koa-route": "^3.2.0"
+    "koa-bodyparser": "^4.2.1",
+    "koa-route": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "util": "^0.11.0"
   }
 }

@@ -1,11 +1,25 @@
-//deal with post request
-//eg. post a name key value
-
-const bodyParser = require('koa-bodyparser');
-const koaBody = require('koa-body');
 const Koa = require('koa');
-const app = new Koa();
+
+// 注意require('koa-router')返回的是函数:
 const router = require('koa-router')();
+const bodyParser = require('koa-bodyparser');
+const app = new Koa();
+
+// log request URL:
+app.use(async (ctx, next) => {
+    console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
+    await next();
+});
+
+// add url-route:
+router.get('/hello/:name', async (ctx, next) => {
+    var name = ctx.params.name;
+    ctx.response.body = `<h1>Hello, ${name}!</h1>`;
+});
+
+router.get('/', async (ctx, next) => {
+    ctx.response.body = '<h1>Index</h1>';
+});
 
 router.get('/', async (ctx, next) => {
     ctx.response.body = `<h1>Index</h1>
@@ -28,22 +42,8 @@ router.post('/signin', async (ctx, next) => {
         <p><a href="/">Try again</a></p>`;
     }
 });
-
-// const main = async function (ctx) {
-// 	const body = ctx.request.body;
-// 	if(!body.name) ctx.throw(400, 'name required');
-// 	ctx.body = { name: body.name };
-// };
-
+// add router middleware:
+app.use(router.routes());
 app.use(bodyParser());
-app.use(koaBody());
-// app.use(main);
 app.listen(3000);
-
-//for testing open another terminal for a post request
-
-//curl -X POST --data "name=Jack" 127.0.0.1:3000
-//RETURN: { "name": 'Jack'}
-
-//curl -X POST --data "name" 127.0.0.1:3000
-//RETURN: name required
+console.log('app started at port 3000...');

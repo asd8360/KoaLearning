@@ -1,0 +1,32 @@
+RESTful api
+
+优点：
+轻量级，便于理解，基于http协议
+使用标准json格式
+面向资源
+五个原则：
+1给予每个对象一个ID
+2将资源链接在一起
+3使用标准规范方法
+4资源多重表示
+5无状态沟通
+
+使用Http动词表示状态转移
+
+  GET 获取资源
+  POST 新建资源
+  DELETE 删除资源
+  PUT 更新资源
+
+使用名词指定资源，编写易于理解的借口
+  api/friends
+  api/profile
+  api/lyrics
+
+用Http Status Code传递状态信息 
+  200表示成功
+  500表示Internal Server Error
+
+缺点：
+网络内容不全是资源
+操作不够灵活
